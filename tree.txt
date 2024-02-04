@@ -1,0 +1,57 @@
+my_corporate_site/
+│
+├── .env                    # Файл для переменных окружения
+├── manage.py
+├── webpack.config.js       # Конфигурация Webpack
+│
+├── my_corporate_site/      # Конфигурационная директория Django
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py         # Настройки Django
+│   ├── urls.py             # Главный маршрутизатор URL-адресов
+│   └── wsgi.py
+│
+├── apps/                   # Приложения Django
+│   ├── home/               # Главная страница и основные информационные страницы
+│   │   ├── migrations/
+│   │   ├── static/
+│   │   ├── templates/
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   │
+│   ├── portfolio/          # Портфолио выполненных проектов
+│   │   ├── migrations/
+│   │   ├── static/
+│   │   ├── templates/
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   │
+│   └── contact/            # Форма обратной связи
+│       ├── migrations/
+│       ├── static/
+│       ├── templates/
+│       ├── admin.py
+│       ├── apps.py
+│       ├── models.py
+│       ├── forms.py        # Формы для обратной связи
+│       ├── tests.py
+│       └── views.py
+│
+├── static/                 # Глобальные статичные файлы (CSS, JS, images)
+│   ├── css/
+│   ├── images/
+│   └── js/
+│
+├── templates/              # Глобальные шаблоны
+│   ├── base.html           # Базовый шаблон
+│   └── ...
+│
+├── media/                  # Медиафайлы, загруженные пользователями
+│
+└── requirements.txt        # Зависимости проекта
