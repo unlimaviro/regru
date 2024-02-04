@@ -706,7 +706,7 @@
     margin-left: 10px;
   }
   .service-btn a{
-    color: #374254;
+    color: #2f2f2f;
     font-size: 1.4rem;
   }
   .service-btn img{
@@ -742,8 +742,8 @@
     width: 95%;
     min-height: 300px;
     height: auto;
-    border-top: 1px solid #374254;
-    border-bottom: 1px solid #374254;
+    border-top: 1px solid #2f2f2f;
+    border-bottom: 1px solid #2f2f2f;
   }
   .price-block:last-child{
     margin-bottom: 30px;
@@ -779,7 +779,7 @@
     color: #374254;
   }
   .price-kp{
-    background-color: #374254;
+    background-color: #2f2f2f;
     width: 300px;
     height: 60px;
     border-radius: 10px;
@@ -823,7 +823,7 @@
   }
 
   .accordion .accordion-item button[aria-expanded=true] {
-    border-bottom: 1px solid #374254;
+    border-bottom: 1px solid #2f2f2f;
   }
 
   .accordion button {
@@ -850,13 +850,13 @@
 
   .accordion button:hover, .accordion button:focus {
     cursor: pointer;
-    color: #374254;
+    color: #2f2f2f;
   }
 
   .accordion button:hover::after, .accordion button:focus::after {
     cursor: pointer;
-    color: #374254;
-    border: 1px solid #374254;
+    color: #2f2f2f;
+    border: 1px solid #2f2f2f;
   }
 
   .accordion button .accordion-title {
@@ -870,7 +870,7 @@
   }
 
   .accordion button[aria-expanded=true] {
-    color: #374254;
+    color: #2f2f2f;
   }
 
   .accordion button[aria-expanded=true] > .icon > img {
