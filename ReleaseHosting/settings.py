@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_vf39+3!_t2%(2!w*wfcxdf1qp#=b_xw^++33c7y=wyhikofs(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.dev-kazuschik.ru', 'http://dev-kazuschik.ru', 'https://dev-kazuschik.ru', 'dev-kazuschik.ru']
+ALLOWED_HOSTS = ['www.dev-kazuschik.ru', 'http://dev-kazuschik.ru', 'https://dev-kazuschik.ru', 'dev-kazuschik.ru', 'localhost']
 
 
 # Application definition
