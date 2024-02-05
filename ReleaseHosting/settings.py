@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "mainpage.apps.MainpageConfig"
+    "mainpage.apps.MainpageConfig",
+    "webpack_loader"
 ]
 
 MIDDLEWARE = [
@@ -101,6 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#webpack
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'mainpage/static/mainpage/dist/', # Путь к папке, куда Webpack помещает сборки
+        'STATS_FILE': os.path.join(BASE_DIR, 'mainpage/static/mainpage/dist/webpack-stats.json'), # Путь к файлу статистики, который генерирует Webpack
+    }
+}
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -121,6 +132,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'collected_static'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
+
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

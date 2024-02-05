@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     border-radius: 15px;
+    margin-top: 5px;
   }
 
   .menu, .nav-btn {
@@ -685,7 +686,7 @@
     padding-right: 20px;
   }
   .service-block-title{
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   .service-block-description{
     text-align: justify;
@@ -908,12 +909,13 @@
 
   /* FOOTER */
   footer{
-    width: 100%;
+    min-width: 98%;
+    max-width: 98%;
     min-height: 60vh;
     height: auto;
     background-color: #2f2f2f;
     border-radius: 20px;
-    margin-top: 10px;
+    margin: 10px auto 0;
   }
   .footer-header{
     padding-top: 20px;

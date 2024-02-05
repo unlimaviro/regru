@@ -2,8 +2,8 @@
   "short_name": "dev-kazuschik.ru",
   "name": "Разработка сайтов под ключ",
   "icons": [{
-    "src": "icon.png",
-    "type": "image/png",
+    "src": "/icon.png",
+    "type": "/image/png",
     "sizes": "192x192"
   }],
   "start_url": "/?utm_source=homescreen",

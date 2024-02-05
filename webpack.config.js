@@ -1,32 +1,67 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-    mode: 'development', // Или 'production' для оптимизации размера и скорости
-    entry: './mainpage/static/js/index.js', // Точка входа в ваше приложение
-    output: {
-        filename: 'bundle.js', // Имя выходного файла
-        path: path.resolve(__dirname, 'mainpage/static/dist'), // Путь для сохранения собранных файлов
+  entry: './mainpage/static/js/main.js', // Путь к вашему основному JS файлу
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash].[ext]',
+            outputPath: 'imgs',
+          },
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './mainpage/templates/index.html', // Путь к вашему HTML шаблону
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    }),
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new CleanWebpackPlugin(),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [['optipng', { optimizationLevel: 5 }]],
+      },
+    }),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
     },
-    module: {
-        rules: [
-            {
-                test: /\.css$/, // Применять правила к файлам CSS
-                use: [
-                    'style-loader', // Добавляет CSS в DOM через тег <style>
-                    'css-loader', // Позволяет импортировать CSS в JavaScript
-                ],
-            },
-            {
-                test: /\.js$/, // Применять правила к файлам JavaScript
-                exclude: /node_modules/, // Исключить папку node_modules
-                use: {
-                    loader: 'babel-loader', // Использовать Babel для транспиляции JavaScript
-                    options: {
-                        presets: ['@babel/preset-env'], // Поддержка современного JavaScript
-                    },
-                },
-            },
-            // Вы можете добавить дополнительные правила для других типов файлов здесь
-        ],
-    },
+  },
 };
