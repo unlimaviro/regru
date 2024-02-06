@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "mainpage.apps.MainpageConfig",
-    "webpack_loader",
-    "google_analytics"
+    "webpack_loader"
 ]
 
 MIDDLEWARE = [
@@ -114,11 +113,7 @@ WEBPACK_LOADER = {
     }
 }
 
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'G-F4WHP81EQ9',
-}
-CELERY_IMPORTS = 'google_analytics.tasks'
-GOOGLE_ANALYTICS_IGNORE_PATH = ['/health/',]
+
 
 
 
