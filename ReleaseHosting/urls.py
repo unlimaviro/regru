@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mainpage.views import index
+from django.urls import include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='home')
+    path('', index, name='home'),
+    re_path(r'djga/', include('google_analytics.urls')),
 ]

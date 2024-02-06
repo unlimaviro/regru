@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "mainpage.apps.MainpageConfig",
-    "webpack_loader"
+    "webpack_loader",
+    "google_analytics"
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'google_analytics.middleware.GoogleAnalyticsMiddleware',
 ]
 
 ROOT_URLCONF = 'ReleaseHosting.urls'
@@ -111,6 +113,12 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'mainpage/static/mainpage/dist/webpack-stats.json'), # Путь к файлу статистики, который генерирует Webpack
     }
 }
+
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': 'G-F4WHP81EQ9',
+}
+CELERY_IMPORTS = 'google_analytics.tasks'
+GOOGLE_ANALYTICS_IGNORE_PATH = ['/health/',]
 
 
 
