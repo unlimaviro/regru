@@ -2,7 +2,7 @@
   "name": "releasehosting",
   "version": "1.0.0",
   "description": "",
-  "main": "/static/js/main.js",
+  "main": "mainpage/static/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode development",
@@ -20,11 +20,13 @@
     "file-loader": "^6.2.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
+    "image-minimizer-webpack-plugin": "^4.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "mini-css-extract-plugin": "^2.8.0",
     "style-loader": "^3.3.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.90.1",
+    "webpack-bundle-tracker": "^3.0.1",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {

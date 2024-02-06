@@ -104,11 +104,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#webpack
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'mainpage/static/mainpage/dist/', # Путь к папке, куда Webpack помещает сборки
-        'STATS_FILE': os.path.join(BASE_DIR, 'mainpage/static/mainpage/dist/webpack-stats.json'), # Путь к файлу статистики, который генерирует Webpack
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'mainpage/dist/',  # Путь от STATIC_URL
+        'STATS_FILE': os.path.join(BASE_DIR, 'mainpage/static/mainpage/dist/webpack-stats.json'),
     }
 }
 
@@ -135,12 +135,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'collectstatic'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-
+    os.path.join(BASE_DIR, 'mainpage/static/mainpage/dist'),
+    os.path.join(BASE_DIR, 'mainpage/static'),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,61 +1,51 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const BundleTracker = require('webpack-bundle-tracker');
 
 module.exports = {
-  entry: './mainpage/static/js/main.js', // Путь к вашему основному JS файлу
+  entry: {
+    main: './mainpage/static/js/main.js',
+    // Добавляем jQuery как дополнительную точку входа
+    jquery: 'jquery'
+  },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './mainpage/static/mainpage/dist'),
+    publicPath: '/static/mainpage/dist/',
   },
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: ['html-loader'],
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[hash].[ext]',
-            outputPath: 'imgs',
-          },
-        },
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
+      // Ваши правила загрузки...
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './mainpage/templates/index.html', // Путь к вашему HTML шаблону
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        removeComments: true,
-      },
+    // Автоматически загружаем jQuery там, где она используется
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
     }),
+    // Остальные плагины...
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new BundleTracker({
+      path: path.resolve(__dirname, './mainpage/static/mainpage/dist/'),
+      filename: 'webpack-stats.json',
+    }),
     new CleanWebpackPlugin(),
     new ImageMinimizerPlugin({
-      minimizerOptions: {
-        plugins: [['optipng', { optimizationLevel: 5 }]],
+      minimizer: {
+        implementation: ImageMinimizerPlugin.imageminMinify,
+        options: {
+          plugins: [
+            ['gifsicle', { interlaced: true }],
+            ['jpegtran', { progressive: true }],
+            ['optipng', { optimizationLevel: 5 }],
+            // Добавьте svgo конфигурацию по желанию
+          ],
+        },
       },
     }),
   ],

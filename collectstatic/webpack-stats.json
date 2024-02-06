@@ -1,0 +1,31 @@
+{
+  "status": "done",
+  "assets": {
+    "jquery.ebc861a2f58d4aa15410.js": {
+      "name": "jquery.ebc861a2f58d4aa15410.js",
+      "path": "C:\\Users\\eyeof\\PycharmProjects\\ReleaseHosting\\mainpage\\static\\mainpage\\dist\\jquery.ebc861a2f58d4aa15410.js",
+      "publicPath": "/static/mainpage/dist/jquery.ebc861a2f58d4aa15410.js"
+    },
+    "main.bd51ecbfabf04ac7a0ab.js": {
+      "name": "main.bd51ecbfabf04ac7a0ab.js",
+      "path": "C:\\Users\\eyeof\\PycharmProjects\\ReleaseHosting\\mainpage\\static\\mainpage\\dist\\main.bd51ecbfabf04ac7a0ab.js",
+      "publicPath": "/static/mainpage/dist/main.bd51ecbfabf04ac7a0ab.js"
+    },
+    "vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js": {
+      "name": "vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js",
+      "path": "C:\\Users\\eyeof\\PycharmProjects\\ReleaseHosting\\mainpage\\static\\mainpage\\dist\\vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js",
+      "publicPath": "/static/mainpage/dist/vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js"
+    }
+  },
+  "chunks": {
+    "jquery": [
+      "vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js",
+      "jquery.ebc861a2f58d4aa15410.js"
+    ],
+    "main": [
+      "vendors-node_modules_jquery_dist_jquery_js.f8ebda47ff7091f9f339.js",
+      "main.bd51ecbfabf04ac7a0ab.js"
+    ]
+  },
+  "publicPath": "/static/mainpage/dist/"
+}

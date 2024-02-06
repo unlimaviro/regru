@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!doctype html>
 <html class="main" lang="ru">
 
@@ -25,6 +26,7 @@
   <link rel="apple-touch-icon" href="{% static 'icon.png' %}">
 
   <link rel="manifest" href="{% static 'site.webmanifest' %}">
+    <link rel="stylesheet" href="">
   <meta name="theme-color" content="#fafafa">
     {% include "google_metrics.html" %}
 </head>
@@ -512,7 +514,7 @@
       <p>Все права защищены</p>
     </div>
   </footer>
-  <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
+  {% render_bundle 'jquery' 'js'%}
+  {% render_bundle 'main' 'js' %}
 </body>
 </html>

@@ -1,0 +1,73 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const BundleTracker = require('webpack-bundle-tracker');
+
+module.exports = {
+  entry: './mainpage/static/js/main.js', // Обновите путь к основному JS файлу в соответствии со структурой вашего проекта
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, './mainpage/static/mainpage/dist'), // Обновленный путь к выходной директории
+    publicPath: '/static/mainpage/dist/', // Обновите publicPath, если нужно (например, для корректной работы лоадеров)
+  },
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash].[ext]',
+            outputPath: 'imgs', // Папка imgs будет внутри dist
+          },
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+      new BundleTracker({
+            path: path.resolve(__dirname, './mainpage/static/mainpage/dist/'),
+            filename: 'webpack-stats.json',
+        }),
+    new CleanWebpackPlugin(),
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.imageminMinify,
+        options: {
+          plugins: [
+            ['gifsicle', { interlaced: true }],
+            ['jpegtran', { progressive: true }],
+            ['optipng', { optimizationLevel: 5 }],
+            // Добавьте svgo конфигурацию по желанию
+          ],
+        },
+      },
+    }),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+};

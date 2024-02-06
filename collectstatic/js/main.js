@@ -1,3 +1,4 @@
+
 $(function() {
     $('#nav-icon6').click(function() {
         $(this).toggleClass('open');
@@ -33,23 +34,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     let marquee = document.querySelector('.marquee p');
-    let scrollSpeed = 0.6; // Скорость движения текста
-    let lastScrollTop = 0; // Последнее положение скролла
+    let scrollSpeed = 1;
+    let lastScrollTop = 0;
+    let rafId;
 
-    window.addEventListener('scroll', function() {
-        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    function updatePosition() {
+        let currentScrolls = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (currentScroll > lastScrollTop) {
-            // Прокрутка вниз
-            marquee.style.transform = 'translateX(' + -(currentScroll * scrollSpeed) + 'px)';
+        if (currentScrolls > lastScrollTop) {
+            marquee.style.transform = 'translateX(' + -(currentScrolls * scrollSpeed) + 'px)';
         } else {
-            // Прокрутка вверх
-            marquee.style.transform = 'translateX(' + (-currentScroll * scrollSpeed) + 'px)';
+            marquee.style.transform = 'translateX(' + (-currentScrolls * scrollSpeed) + 'px)';
         }
 
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Обновляем положение скролла
+        lastScrollTop = currentScrolls <= 0 ? 0 : currentScrolls;
+        rafId = requestAnimationFrame(updatePosition);
+    }
+
+    window.addEventListener('scroll', function() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+        }
+        rafId = requestAnimationFrame(updatePosition);
     }, false);
 });
+
 
 
 
