@@ -26,8 +26,6 @@
 
   <link rel="manifest" href="{% static 'site.webmanifest' %}">
   <meta name="theme-color" content="#fafafa">
-    {% include "google_metrics.html" %}
-    {% include "yandex_metrics.html" %}
 </head>
 
 <body>
@@ -515,5 +513,7 @@
   </footer>
   <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
+    {% include "google_metrics.html" %}
+    {% include "yandex_metrics.html" %}
 </body>
 </html>
