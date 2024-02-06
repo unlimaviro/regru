@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_vf39+3!_t2%(2!w*wfcxdf1qp#=b_xw^++33c7y=wyhikofs(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.dev-kazuschik.ru', 'dev-kazuschik.ru']
+ALLOWED_HOSTS = ['www.dev-kazuschik.ru', 'dev-kazuschik.ru', 'localhost']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
