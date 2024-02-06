@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     let marquee = document.querySelector('.marquee p');
-    let scrollSpeed = 0;
+    let scrollSpeed = 1;
     let lastScrollTop = 0;
     let rafId;
 
