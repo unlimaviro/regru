@@ -1,3 +1,4 @@
 Django~=4.2.9
 whitenoise~=6.6.0
-webpack~=6.0.0
+#webpack~=6.0.0
+django-robots~=6.1

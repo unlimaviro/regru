@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "mainpage.apps.MainpageConfig",
-    "webpack_loader"
+    "webpack_loader",
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'robots',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
