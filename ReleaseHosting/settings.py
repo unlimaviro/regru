@@ -118,9 +118,6 @@ WEBPACK_LOADER = {
 }
 
 
-
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -147,8 +144,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-
-
 
 
 # Default primary key field type
